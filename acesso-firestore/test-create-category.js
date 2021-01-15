@@ -11,6 +11,6 @@ const db = admin.firestore()
 const doc = db.collection('categories').doc()
 
 doc.set({
-    category: 'Categoria criada via código'
+  category: 'Categoria criada via código'
 })
 .then(value => console.log(value))
