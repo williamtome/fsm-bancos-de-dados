@@ -5,3 +5,6 @@ Conteúdo do curso que visa aprender os principais conceitos sobre bancos de dad
 ## Bancos de dados utilizados
 
 * [Firebase Cloud Firestore](https://firebase.google.com/)
+
+# Autor
+**William Weirich Tomé**
