@@ -1,6 +1,6 @@
 const admin = require('firebase-admin');
 
-const serviceAccount = require('./firebase.json');
+const serviceAccount = require('../firebase.json');
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
@@ -8,9 +8,9 @@ admin.initializeApp({
 
 const db = admin.firestore()
 
-const doc = db.collection('categories').doc('NiWPSSYvCcPdwxoY3qYw')
+const doc = db.collection('categories').doc()
 
-doc.update({
-  category: 'Novo nome da categoria'
+doc.set({
+  category: 'Categoria criada via código'
 })
 .then(value => console.log(value))
