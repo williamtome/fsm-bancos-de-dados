@@ -13,7 +13,7 @@ const testes = async() => {
   //   category: 'Novo nome da categoria'
   // })
 
-  const cat = await categories.findAll()
+  const cat = await categories.findAllPaginate({})
   console.log(cat);
 }
 
