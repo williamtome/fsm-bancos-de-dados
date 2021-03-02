@@ -2,22 +2,22 @@ const db = require('./firestore')
 const admin = require('firebase-admin')
 
 const findAll = async() => {
-  const categoriesDB = await db.collection('categories').get()
+  const productsDB = await db.collection('products').get()
 
-  if (categoriesDB.empty) {
+  if (productsDB.empty) {
     return []
   }
 
-  const categories = []
+  const products = []
 
-  categoriesDB.forEach(doc => {
-    categories.push({
+  productsDB.forEach(doc => {
+    products.push({
       ...doc.data(),
       id: doc.id
     })
   })
 
-  return categories
+  return products
 }
 
 const findAllPaginate = async({ pageSize = 1, startAfter = 'Novo nome da categoria' }) => {
