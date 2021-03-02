@@ -76,6 +76,17 @@ const update = async(id, { categories, ...data }) => {
 
 const remove = async(id) => {
   const doc = db.collection('products').doc(id)
+  
+  const images = await doc.collection('images').get()
+  
+  const exclusoes = []
+
+  await images.forEach(img => {
+    exclusoes.push(doc.collection('images').doc(img.id).delete())
+  })
+
+  await Promise.all(exclusoes)
+
   await doc.delete()
 }
 
