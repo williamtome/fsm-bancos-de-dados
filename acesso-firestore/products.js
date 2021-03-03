@@ -46,7 +46,7 @@ const findAll = async() => {
 const findAllPaginate = async({ pageSize = 1, startAfter = '' }) => {
   const productsDB = await db
                       .collection('products')
-                      .orderBy('category')
+                      .orderBy('product')
                       .limit(pageSize+1)
                       .startAfter(startAfter)
                       .get()
