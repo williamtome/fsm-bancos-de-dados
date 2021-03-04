@@ -28,6 +28,7 @@ const createTables = async() => {
       category TEXT
     );
   `)
+  console.log('Categories table were created!');
   await run(db, `
     CREATE TABLE products (
       id INTEGER NOT NULL PRIMARY KEY,
@@ -35,6 +36,7 @@ const createTables = async() => {
       price REAL
     );
   `)
+  console.log('Products table were created!');
   await run(db, `
     CREATE TABLE images (
       id INTEGER NOT NULL PRIMARY KEY,
@@ -43,13 +45,14 @@ const createTables = async() => {
       product_id INTEGER REFERENCES products(id)
     );
   `)
+  console.log('Images table were created!');
   await run(db, `
     CREATE TABLE categories_products (
       category_id INTEGER REFERENCES categories(id),
       product_id INTEGER REFERENCES products(id)
     );
   `)
-  console.log('Tables were created!');
+  console.log('Categories Products table were created!');
 }
 
 createTables().catch(err => console.log(err))
