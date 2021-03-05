@@ -22,8 +22,8 @@ const run = (db, query, values) => new Promise((resolve, reject) => {
 
 const createProducts = async() => {
   const db = await initDB('banquinho.sqlite3')
-  // await run(db, `INSERT INTO products (product, price) VALUES (?, ?);`, ['SmartTv Sony', 1499])
-  await run(db, `INSERT INTO categories_products (category_id, product_id) VALUES (?, ?);`, [1, 1])
+  await run(db, `INSERT INTO products (product, price) VALUES (?, ?);`, ['SmartTv Sony', 1499])
+  // await run(db, `INSERT INTO categories_products (category_id, product_id) VALUES (?, ?);`, [1, 1])
   console.log('Product created!');
 }
 
