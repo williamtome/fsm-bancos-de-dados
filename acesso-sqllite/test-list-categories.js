@@ -23,7 +23,7 @@ const run = (db, query) => new Promise((resolve, reject) => {
 const listCategories = async() => {
   const db = await initDB('banquinho.sqlite3')
   const categories = await run(db, `SELECT * FROM categories;`)
-  console.log(categories);
+  console.log('Categories:', categories);
 }
 
 listCategories().catch(err => console.log(err))
