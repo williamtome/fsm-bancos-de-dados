@@ -12,10 +12,16 @@ const findAll = async() => {
   console.log('Categories:', categories);
 }
 
+const remove = async(id) => {
+  const dbConn = await db.init('./banquinho.sqlite3')
+  await db.queryWithParams(dbConn, `DELETE FROM categories WHERE id = ?;`, id)
+  console.log('Category DELETED!');
+}
+
 module.exports = {
   findAll,
   // findAllPaginate,
   create,
   // update,
-  // remove
+  remove
 }
