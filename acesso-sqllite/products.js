@@ -61,6 +61,33 @@ const init = database => {
     for await(const category of categories)
       await db.queryWithParams(dbConn, `INSERT INTO categories_products (category_id, product_id) VALUES (?, ?);`, [category, id])
   }
+
+  const findAllByCategory = async(categoryId) => {
+    const dbConn = await db.init(database)
+    const products = await db.query(
+      dbConn,
+      `SELECT * FROM products WHERE id in (
+        SELECT product_id FROM categories_products WHERE category_id = ${categoryId}
+      );`
+    )
+    
+    const condition = products.map(product => product.id).join(', ')
+    const images = await db.query(dbConn,'select * from images where product_id in ('+condition+') GROUP BY product_id')
+    const mapImages = images.reduce((prev, current) => {
+      return {
+        ...prev,
+        [current.product_id]: current
+      }
+    }, {})
+
+    const productsWithImages = products.map(product => {
+      return {
+        ...product,
+        image: mapImages[product.id]
+      }
+    })
+    console.log('products:', productsWithImages);
+  }
   
   const findAllPaginate = async({ pageSize = 1, currentPage = 0 }) => {
     const dbConn = await db.init(database)
@@ -97,6 +124,7 @@ const init = database => {
     findAll,
     findAllPaginate,
     findAllImages,
+    findAllByCategory,
     create,
     addImage,
     update,
