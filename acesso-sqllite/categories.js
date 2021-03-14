@@ -29,13 +29,14 @@ const init = database => {
   const findAllPaginate = async({ pageSize = 1, currentPage = 0 }) => {
     const dbConn = await db.init(database)
     const categories = await db.query(dbConn, `SELECT * FROM categories limit ${currentPage*pageSize}, ${pageSize+1};`)
+    const hasNext = categories.length > pageSize
     
     if (categories.length > pageSize) 
       categories.pop()
     
     return {
       data: categories,
-      hasNext: categories.length > pageSize
+      hasNext
     }
   }
 
