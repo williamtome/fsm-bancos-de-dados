@@ -14,8 +14,10 @@ const test = async() => {
   // await products.addImage(['imagen do produto 2', 'url/produto2.png'], 4)
   // await products.update(['Produto 1 editado', 80], 2);
   // await products.remove(3)
-  await products.findAll()
-  console.log('cp 0:',await products.findAllPaginate({ pageSize: 2, currentPage: 0 }));
+  // await products.findAll()
+  await products.findAllByCategory(2)
+  // await products.updateCategories(2, [2, 2]);
+  // console.log('cp 0:',await products.findAllPaginate({ pageSize: 2, currentPage: 0 }));
 }
 
 test().catch(err => console.log(err))
