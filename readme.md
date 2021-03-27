@@ -6,6 +6,7 @@ Conteúdo do curso que visa aprender os principais conceitos sobre bancos de dad
 
 * [Firebase Cloud Firestore](https://firebase.google.com/)
 * [SQLite](https://https://www.sqlite.org/download.html/)
+* [MySQL](https://www.mysql.com/)
 
 # Autor
 **William Weirich Tomé**
