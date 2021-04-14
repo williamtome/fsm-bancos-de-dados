@@ -9,8 +9,8 @@ const test = async() => {
   })
 
   try {
-    const [err, results, fields] = await connection.execute('SELECT * FROM categories;')
-    console.log([err, results, fields])
+    const [results] = await connection.execute('SELECT * FROM categories;')
+    console.log([results])
   } catch (err) {
     console.error('ERRO: ', err)
   }
