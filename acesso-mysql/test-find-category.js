@@ -10,7 +10,7 @@ const test = async() => {
 
   try {
     const categoryId = 2;
-    const [results] = await connection.execute('SELECT * FROM categories WHERE id = ?;', [categoryId]);
+    const [results] = await connection.query('SELECT * FROM categories WHERE id = ?;', [categoryId]);
     console.log([results])
   } catch (err) {
     console.error('ERRO: ', err)
