@@ -9,10 +9,13 @@ const test = async() => {
   })
 
   try {
-    const data = ['Geladeira', 997]
+    const data = ['Sofá', 1200]
     const [results] = await connection.execute(
       'INSERT INTO products (product, price) VALUES (?,?);',
       data
+    )
+    await connection.execute(
+      'INSERT INTO categories_products (category_id, product_id) VALUES (?,?)',[2,results.insertId]
     )
     console.log([results])
   } catch (err) {
