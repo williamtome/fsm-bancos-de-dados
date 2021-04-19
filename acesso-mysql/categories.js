@@ -6,7 +6,13 @@ const init = connection => {
     return results
   }
 
+  const create = async(data) => {
+    const conn = await connection
+    await conn.execute('INSERT INTO categories (category) VALUES (?);', [data])
+  }
+
   return {
+    create,
     findAll
   }
 }
