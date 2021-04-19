@@ -18,11 +18,10 @@ const init = connection => {
 
   const update = async(data, categoryId) => {
     const conn = await connection
-    const [results] = await conn.execute(
+    await conn.execute(
       'UPDATE categories SET category = ? WHERE id = ?;',
       [data, categoryId]
     )
-    return results
   }
 
   return {
