@@ -16,9 +16,19 @@ const init = connection => {
     await conn.execute('DELETE FROM categories WHERE id = ? LIMIT 1;', [categoryId])
   }
 
+  const update = async(data, categoryId) => {
+    const conn = await connection
+    const [results] = await conn.execute(
+      'UPDATE categories SET category = ? WHERE id = ?;',
+      [data, categoryId]
+    )
+    return results
+  }
+
   return {
     create,
     remove,
+    update,
     findAll
   }
 }
