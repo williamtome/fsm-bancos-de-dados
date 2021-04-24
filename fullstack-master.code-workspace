@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"editor.minimap.enabled": false,
+		"workbench.colorTheme": "Black",
+		"workbench.iconTheme": "material-icon-theme",
+		"workbench.activityBar.visible": true
+	}
+}
